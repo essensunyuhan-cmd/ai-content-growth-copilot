@@ -46,3 +46,35 @@ Planned validation should compare V1 and V1.1 on the same fixed cases and inspec
 - operator adoption behavior
 
 No simulated or teaching-only numbers should be treated as real user or commercial results.
+
+
+## V1.2 — prompt refactor and workflow performance
+
+### Problem observed
+
+The multi-node workflow accumulated long system prompts and long intermediate outputs across downstream nodes. On the same fixed test case, the V1.1 baseline reached:
+
+- Runtime: **87.767s**
+- Total tokens: **35,519**
+
+### Changes
+
+1. Refactor repeated system-prompt rules into shorter principle-based constraints
+2. Compress intermediate outputs while preserving evidence and risk boundaries
+3. Keep content opportunities dynamic at 1–3 rather than padding output
+4. Run historical-performance review and user-insight analysis as parallel upstream branches
+5. Keep the final API-facing output focused on:
+   - user insight
+   - content opportunities
+   - platform plan
+
+### Result on the same test case
+
+| Version | Runtime | Total Tokens |
+| --- | ---: | ---: |
+| V1.1 baseline | 87.767s | 35,519 |
+| V1.2 final | 37.288s | 16,469 |
+
+Compared with the baseline, runtime decreased by about **57.5%** and token usage by about **53.6%**.
+
+The optimization target was lower latency and cost without removing the product's core evidence, product-boundary, and risk-control constraints.
