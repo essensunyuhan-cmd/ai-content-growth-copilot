@@ -5,7 +5,7 @@
 AI Content Growth Copilot 是一个面向内容运营 / 新媒体运营 / 小型内容团队的 **AI 内容增长决策 Workflow（工作流）**。  
 它不以“批量生成文案”为核心，而是把 **历史表现、用户反馈、产品事实、品牌规范** 串进同一条决策链路，帮助运营人员从证据出发发现内容机会、制定策略，并为下一轮增长实验提供依据。
 
-**Status:** V1.1 in progress · Dify Workflow · RAG · Eval · Human-in-the-loop
+**Status:** V1.2 · Dify Workflow · RAG · Eval · Human-in-the-loop
 
 ---
 
@@ -164,6 +164,18 @@ V1.1 的核心改动：
 
 详见 [Iteration Log](docs/iteration-log.md)。
 
+### V1.2：性能与成本优化
+
+在同一固定测试 Case 下，对多节点 Workflow 做了 Prompt 去重、上游输出压缩和并行化调整：
+
+| 版本 | 运行耗时 | Total Tokens |
+| --- | ---: | ---: |
+| V1.1 Baseline | 87.767s | 35,519 |
+| V1.2 Final | 37.288s | 16,469 |
+
+相较 Baseline，运行耗时下降约 **57.5%**，Token 消耗下降约 **53.6%**。  
+这次优化的目标不是减少业务约束，而是在保留证据边界、动态机会数量和风险控制的前提下，降低多节点上下文累积造成的延迟与成本。
+
 ---
 
 ## 7. Repository Structure
@@ -173,7 +185,8 @@ V1.1 的核心改动：
 ├── README.md
 ├── LICENSE
 ├── dify/
-│   └── AI_Content_Growth_Copilot_V1.1.yml
+│   ├── AI_Content_Growth_Copilot_V1.1.yml
+│   └── AI_Content_Growth_Copilot_V1.2.yml
 ├── docs/
 │   ├── product-design.md
 │   └── iteration-log.md
@@ -192,7 +205,7 @@ V1.1 的核心改动：
 ## 8. Quick Start
 
 1. 在 Dify 中新建 / 导入 Workflow。
-2. 导入 `dify/AI_Content_Growth_Copilot_V1.1.yml`。
+2. 推荐导入最新版本 `dify/AI_Content_Growth_Copilot_V1.2.yml`。
 3. 重新绑定你自己的 LLM Provider。
 4. 为两个知识检索节点分别绑定：
    - 产品事实 / 能力边界知识库
