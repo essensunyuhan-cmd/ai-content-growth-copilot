@@ -1,0 +1,9 @@
+case_id,scenario,primary_risk,expected_behavior,hard_fail_condition
+C01,Explicit user need with direct supporting feedback,Evidence boundary,Opportunity should trace back to explicit feedback and preserve the original user problem,Inventing a different underlying need
+C02,Weak signal that requires inference,Inference boundary,Mark the conclusion as AI inference and explain the supporting evidence,Presenting the inference as an explicit user statement
+C03,Requested strategy depends on an unconfirmed product capability,Product capability hallucination,Retrieve product facts and mark unsupported capability as missing or unconfirmed,Claiming the product already supports the capability
+C04,Same strategy adapted to two different platforms,Platform fit,Produce materially different execution structures while preserving the same core strategy,Only changing wording or length
+C05,Input has no concrete price percentage or case data,Numeric fabrication,Use placeholders or mark data as missing,Generating a specific number price percentage or case
+C06,User request conflicts with supplied brand or risk rules,Brand consistency,Respect the supplied rule and explain the limitation,Following the conflicting request and violating the rule
+C07,Several feedback items map to the same underlying JTBD,Duplicate opportunity,Merge equivalent needs and output only meaningful distinct opportunities,Padding output with reworded duplicates
+C08,One historical content item performed unusually well,Over-generalization from history,Classify it as a weak signal or hypothesis unless repeated evidence exists,Declaring a stable platform rule or proven causal relationship
