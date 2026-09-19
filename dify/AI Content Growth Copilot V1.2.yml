@@ -1,0 +1,1861 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: workflow
+  name: AI Content Growth Copilot V1.2
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.24@9e12eef09973667f0eaf4f082af883167e1de88740b22e71e71488d020c3778a
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/tongyi:0.2.22@9cea96ffc7977f536c02999c80ff1283b1819aab9b6fa2fdf789d0c6c7d03715
+    version: null
+kind: app
+version: 0.7.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        knowledge_file_size_limit: 15
+        single_chunk_attachment_limit: 10
+        skill_file_size_limit: 50
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1787989063892-source-1787989081538-target
+      source: '1787989063892'
+      sourceHandle: source
+      target: '1787989081538'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1787989121188-source-1787990087116-target
+      selected: false
+      source: '1787989121188'
+      sourceHandle: source
+      target: '1787990087116'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: knowledge-retrieval
+      id: 1787989081538-source-1788077153398-target
+      source: '1787989081538'
+      sourceHandle: source
+      target: '1788077153398'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1788077153398-source-1787989118971-target
+      source: '1788077153398'
+      sourceHandle: source
+      target: '1787989118971'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: knowledge-retrieval
+      id: 1787989118971-source-1788082404001-target
+      source: '1787989118971'
+      sourceHandle: source
+      target: '1788082404001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1788082404001-source-1787989121188-target
+      source: '1788082404001'
+      sourceHandle: source
+      target: '1787989121188'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1787989024872-source-1788771473383-target
+      source: '1787989024872'
+      sourceHandle: source
+      target: '1788771473383'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1787989024872-source-1787989063892-target
+      source: '1787989024872'
+      sourceHandle: source
+      target: '1787989063892'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1788771473383-source-1787989081538-target
+      source: '1788771473383'
+      sourceHandle: source
+      target: '1787989081538'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 用户输入
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: 产品介绍
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: product_info
+        - default: ''
+          hint: ''
+          label: 目标用户
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: target_user
+        - default: ''
+          hint: ''
+          label: 核心卖点
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: selling_points
+        - default: ''
+          hint: ''
+          label: 用户反馈
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: user_feedback
+        - default: ''
+          hint: ''
+          label: 运营目标
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: operation_goal
+        - default: ''
+          hint: ''
+          label: 目标平台
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: platforms
+        - default: ''
+          hint: ''
+          label: 历史内容数据
+          max_length: null
+          options: []
+          placeholder: ''
+          required: false
+          type: paragraph
+          variable: historical_content_data
+        - default: ''
+          hint: ''
+          label: 账号基线指标
+          options: []
+          placeholder: ''
+          required: false
+          type: paragraph
+          variable: baseline_metrics
+      height: 291
+      id: '1787989024872'
+      position:
+        x: -180.54961877559606
+        y: 261
+      positionAbsolute:
+        x: -180.54961877559606
+        y: 261
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 用户洞察分析
+        model:
+          completion_params:
+            max_tokens: 2000
+            temperature: 0.3
+            thinking: false
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 4ad24566-73e9-480c-a09f-c569a65ae3dc
+          role: system
+          text: '你是一名用户研究与内容增长策略分析师。
+
+
+            任务：
+
+            基于产品背景和真实用户反馈，识别用户真正关心的问题、使用场景和潜在内容需求，为后续“内容机会发现”提供可靠输入。
+
+
+            规则：
+
+
+            1. Evidence First（证据优先）
+
+            - 所有洞察优先来自用户真实反馈，不得凭空创造需求。
+
+            - 区分“用户明确表达”和“AI推断”。
+
+            - AI推断必须说明依据，不得写成客观事实。
+
+            - 证据不足时明确标记“证据不足”。
+
+
+            2. 用户需求边界
+
+            - 产品卖点不等于用户需求，不得因为产品有某功能就反推用户需要它。
+
+            - 每个 insight 只表达一个核心用户需求。
+
+            - 相似反馈可以合并，但不同决策问题不得强行合并。
+
+            - 同一条反馈不得重复计入证据。
+
+            - evidence_count 必须严格等于去重后的 evidence 数量。
+
+
+            3. 表达边界
+
+            - 不自行使用“高频、普遍、大多数”等结论，除非输入有明确依据；优先写“X/Y条反馈支持”。
+
+            - 不夸大用户情绪或需求。
+
+            - 对趋势、未来结果等不确定问题，只描述用户希望获得的决策依据，不得升级成“准确预测未来”。
+
+
+            4. content_need 边界
+
+            - 只描述用户需要理解或获得什么信息。
+
+            - 不得自行补充输入中未出现的具体影响因素、产品能力或行业事实。
+
+            - 禁止生成选题、标题、文案和平台方案。
+
+
+            5. 输出
+
+            - 按既定 Structured Output（结构化输出）返回。
+
+            - 建议保留 3–6 条最重要且不重复的洞察。'
+        - id: 6a9a23f4-cdd5-4c99-9440-9204768ded21
+          role: user
+          text: '请分析以下业务信息和用户反馈。
+
+
+            【产品介绍】
+
+            {{#1787989024872.product_info#}}
+
+
+            【目标用户】
+
+            {{#1787989024872.target_user#}}
+
+
+            【核心卖点】
+
+            {{#1787989024872.selling_points#}}
+
+
+            【运营目标】
+
+            {{#1787989024872.operation_goal#}}
+
+
+            【目标平台】
+
+            {{#1787989024872.platforms#}}
+
+
+            【真实用户反馈】
+
+            {{#1787989024872.user_feedback#}}
+
+
+            请输出：
+
+
+            1. 当前最核心的用户问题
+
+            2. 高频问题
+
+            3. 核心痛点
+
+            4. 典型使用场景
+
+            5. 用户情绪
+
+            6. 用户明确表达的需求
+
+            7. AI推断出的潜在需求
+
+            8. 潜在内容需求
+
+            9. 每个重要判断对应的用户反馈证据
+
+
+            不要生成任何具体内容选题。'
+        reasoning_format: separated
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              core_problem:
+                description: 当前用户反馈反映出的最核心用户问题，一句话概括。
+                type: string
+              evidence_gaps:
+                description: 当前数据无法支持的判断。
+                items:
+                  type: string
+                type: array
+              insights:
+                items:
+                  additionalProperties: false
+                  properties:
+                    content_need:
+                      description: 用户需要获得或理解什么信息
+                      type: string
+                    emotion:
+                      description: 用户主要情绪
+                      type: string
+                    evidence:
+                      description: 只能包含能够直接支持当前 user_need 的反馈，不得为了提高 evidence_count
+                        加入仅弱相关的反馈。evidence_count 必须严格等于 evidence 数组实际条数。
+                      items:
+                        type: string
+                      type: array
+                    evidence_count:
+                      type: number
+                    scenario:
+                      description: 需求发生的典型场景
+                      type: string
+                    type:
+                      description: 只能填写“用户明确表达”或“AI推断”
+                      type: string
+                    user_need:
+                      description: 用户需要解决的问题
+                      type: string
+                  required:
+                  - user_need
+                  - type
+                  - evidence_count
+                  - evidence
+                  type: object
+                type: array
+            required:
+            - core_problem
+            - insights
+            type: object
+        structured_output_enabled: true
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 116
+      id: '1787989063892'
+      position:
+        x: 111.93013377426655
+        y: 217.77606839753898
+      positionAbsolute:
+        x: 111.93013377426655
+        y: 217.77606839753898
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 内容机会发现
+        model:
+          completion_params:
+            max_tokens: 2500
+            temperature: 0.4
+            thinking: false
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 41bad47b-4e6f-4acf-909d-d8e276bc121f
+          role: system
+          text: '你是一名内容增长策略分析师。
+
+
+            任务：
+
+            基于用户洞察、历史内容表现、产品能力和运营目标，判断“下一步什么内容方向最值得验证，以及为什么”。
+
+
+            规则：
+
+
+            1. 证据与需求
+
+            - 每个内容机会必须能追溯到具体用户洞察或反馈，不得创造不存在的需求。
+
+            - 产品卖点不能反推用户需求。
+
+            - 用户需求强不代表一定值得做，还要判断产品是否能承接。
+
+            - 历史表现只能作为辅助证据，不能替代用户需求。
+
+
+            2. 历史证据等级
+
+            - Level A：多轮相似测试结果稳定，可作为较稳定经验。
+
+            - Level B：已有多个正向或负向信号，但仍需验证。
+
+            - Level C：单条数据、少量数据或 AI 推断，仅作为实验假设。
+
+            - 单条高表现内容不得直接升级为平台规律或因果结论。
+
+            - 若历史表现与当前用户需求冲突，应明确说明冲突。
+
+
+            3. 内容机会判断
+
+            每个机会分别判断：
+
+            - 用户需求强度：1–5
+
+            - 产品匹配度：1–5
+
+            - 内容传播潜力：1–5
+
+
+            三个维度分别保留，不计算综合总分。
+
+            每项评分必须有简短依据。
+
+
+            4. 去重与数量
+
+            - 输出 1–3 个最值得验证的机会。
+
+            - 不得为了凑数量扩展不存在的需求。
+
+            - 若两个机会服务于同一核心决策任务、使用相似证据并导向相同用户行动，应优先合并。
+
+            - 只有用户问题、JTBD（待完成任务）或验证假设存在实质差异时才拆分。
+
+
+            5. 风险边界
+
+            - 不得把 AI 预估写成已验证事实。
+
+            - 不得引入输入外的市场规律、平台规律或行业结论作为事实。
+
+            - 证据弱时降低优先级或标记为“验证型机会”。
+
+
+            6. 验证
+
+            每个机会必须给出：
+
+            - 推荐理由
+
+            - 用户证据
+
+            - 机会类型：核心机会 / 验证型机会
+
+            - 可验证假设
+
+            - 可观测的成功信号
+
+
+            7. 输出长度
+
+            - 只保留决策所需信息。
+
+            - 单个内容机会控制在约 250–300 字。
+
+            - 禁止生成完整标题、文案和多平台执行方案。'
+        - id: 9433dc8e-a1dc-44b4-867b-d9b46bc0df06
+          role: user
+          text: '请根据以下信息识别最值得验证的内容机会。
+
+
+            【用户洞察】
+
+            {{#1787989063892.structured_output#}}
+
+
+            【产品介绍】
+
+            {{#1787989024872.product_info#}}
+
+
+            【核心卖点】
+
+            {{#1787989024872.selling_points#}}
+
+
+            【运营目标】
+
+            {{#1787989024872.operation_goal#}}
+
+
+            【目标平台】
+
+            {{#1787989024872.platforms#}}
+
+            请根据证据强度输出 1–3 个最值得验证的内容机会。证据不足时允许只输出 1 个，不得为了凑数量扩展不存在的用户需求。
+
+
+            请按照以下固定格式输出内容机会：
+
+
+            【内容机会1】
+
+
+            内容机会：
+
+            目标用户：
+
+            对应用户需求：
+
+            需求来源：用户明确表达 / AI推断
+
+            用户证据：
+
+            推荐理由：
+
+
+            用户需求强度：X/5
+
+            评分依据：
+
+
+            产品匹配度：X/5
+
+            评分依据：
+
+
+            传播潜力预估：X/5
+
+            预估依据：
+
+
+            机会类型：核心机会 / 验证型机会
+
+
+            验证假设：
+
+            成功信号：
+
+
+            如有更多有效且不重复的机会，继续按相同格式输出，最多3条。
+
+
+            不要输出综合总分。
+
+            不要输出完整标题或文案。
+
+            不要输出JSON Schema。
+
+
+            【历史内容表现与复盘结论】
+
+            {{#1788771473383.text#}}'
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              additionalProperties:
+                type: string
+              properties:
+                additionalProperties: false
+                properties:
+                  opportunities:
+                    additionalProperties: false
+                    properties:
+                      description:
+                        type: string
+                      items:
+                        additionalProperties: false
+                        properties:
+                          additionalProperties:
+                            type: string
+                          properties:
+                            additionalProperties: false
+                            properties:
+                              evidence:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  items:
+                                    additionalProperties: false
+                                    properties:
+                                      type:
+                                        type: string
+                                    required:
+                                    - type
+                                    type: object
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                - items
+                                type: object
+                              growth_reason:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              growth_score:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  maximum:
+                                    type: number
+                                  minimum:
+                                    type: number
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - minimum
+                                - maximum
+                                - description
+                                type: object
+                              need_reason:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              need_score:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  maximum:
+                                    type: number
+                                  minimum:
+                                    type: number
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - minimum
+                                - maximum
+                                - description
+                                type: object
+                              opportunity:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              priority:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  enum:
+                                    items:
+                                      type: string
+                                    type: array
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - enum
+                                - description
+                                type: object
+                              product_fit_reason:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              product_fit_score:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  maximum:
+                                    type: number
+                                  minimum:
+                                    type: number
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - minimum
+                                - maximum
+                                - description
+                                type: object
+                              reason:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              source_need:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              source_type:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  enum:
+                                    items:
+                                      type: string
+                                    type: array
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - enum
+                                - description
+                                type: object
+                              success_signal:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              target_user:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              validation_hypothesis:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                            required:
+                            - opportunity
+                            - target_user
+                            - source_need
+                            - source_type
+                            - evidence
+                            - reason
+                            - need_score
+                            - need_reason
+                            - product_fit_score
+                            - product_fit_reason
+                            - growth_score
+                            - growth_reason
+                            - priority
+                            - validation_hypothesis
+                            - success_signal
+                            type: object
+                          required:
+                            items:
+                              type: string
+                            type: array
+                          type:
+                            type: string
+                        required:
+                        - type
+                        - properties
+                        - required
+                        - additionalProperties
+                        type: object
+                      type:
+                        type: string
+                    required:
+                    - type
+                    - description
+                    - items
+                    type: object
+                required:
+                - opportunities
+                type: object
+              required:
+                items:
+                  type: string
+                type: array
+              type:
+                type: string
+            required:
+            - type
+            - properties
+            - required
+            - additionalProperties
+            type: object
+        structured_output_enabled: false
+        title: LLM 2
+        type: llm
+        vision:
+          enabled: false
+      height: 116
+      id: '1787989081538'
+      position:
+        x: 404.14817202758024
+        y: 282
+      positionAbsolute:
+        x: 404.14817202758024
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1788077153398'
+          - result
+        desc: 选题策略
+        model:
+          completion_params:
+            max_tokens: 2500
+            temperature: 0.4
+            thinking: false
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: a2db8e09-0049-4407-bc65-0c2543dbd856
+          role: system
+          text: '你是一名资深内容策略与增长运营专家。
+
+
+            任务：
+
+            将上一步已确定的内容机会转化为运营人员可以直接执行的内容策略。
+
+
+            回答：
+
+            “这个机会应该从什么角度做、对谁说、解决什么问题、希望用户产生什么行动。”
+
+
+            规则：
+
+
+            1. 上游一致性
+
+            - 不创造新的内容机会。
+
+            - 每条策略必须对应上一步机会，不得偏离原始用户需求和证据。
+
+            - 优先处理核心机会；最多输出 3 条策略。
+
+
+            2. 每条策略必须包含
+
+            - 对应内容机会
+
+            - 目标用户
+
+            - 用户核心问题
+
+            - 内容目标
+
+            - 核心观点
+
+            - 内容切入角度
+
+            - 开场方向
+
+            - 当前已有支撑信息
+
+            - 仍需补充的信息
+
+            - 用户行动
+
+            - 风险或数据缺口
+
+
+            3. 事实与产品边界
+
+            - 已有支撑信息只能来自：用户反馈、产品输入、上一步内容机会或知识库确认事实。
+
+            - 具体产品能力、价格、金额、比例、案例、成交数据和市场数据，输入或知识库未确认时不得自行补全。
+
+            - 缺失信息必须放入“仍需补充的信息”。
+
+            - 产品事实以检索到的当前产品事实与能力边界为优先依据。
+
+            - 知识库未确认的能力不得根据行业常识或相似产品自行推断。
+
+
+            4. 推断边界
+
+            - 一般行业规律不得写成当前业务的确定事实。
+
+            - 历史成交价只能作为价格判断和谈判参考之一，不得直接定义为“可砍价空间”。
+
+            - 未经证实的因果关系只能作为推断或待验证假设。
+
+
+            5. 节点职责
+
+            - 不生成完整小红书文案或抖音口播。
+
+            - 不做多平台差异化执行。
+
+            - 不重复上游的完整分析，只保留策略执行需要的信息。
+
+
+            6. 输出长度
+
+            - 每条策略控制在约 200–250 字。
+
+            - 内容简洁、结构化，方便下一节点直接使用。'
+        - id: c2f359b8-0e93-4974-9f4f-eca8ad63221f
+          role: user
+          text: "请根据以下内容机会生成内容策略。\n\n【内容机会】\n{{#1787989081538.text#}}\n\n【检索到的当前产品事实与能力边界】\n\
+            {{#context#}}\n\n【产品介绍】\n{{#1787989024872.product_info#}}\n\n【目标用户】\n\
+            {{#1787989024872.target_user#}}\n\n【核心卖点】\n{{#1787989024872.selling_points#}}\n\
+            \n【运营目标】\n{{#1787989024872.operation_goal#}}\n\n请优先从“核心机会”中选择最多3个进入下一步。\n\
+            \n对于每个内容机会，请制定一套内容策略，包括：\n\n1. 对应的内容机会\n2. 目标用户\n3. 用户核心问题\n4. 内容目标\n\
+            5. 核心观点\n6. 内容切入角度\n7. 开场方向\n8. 需要使用的关键支撑信息\n9. 希望用户采取的行动\n10. 当前策略可能存在的风险或数据缺口\n\
+            \n不要生成完整标题、完整文案或多平台内容版本。\n\n请严格按照以下格式输出最多3条内容策略。\n\n【策略1】\n\n对应内容机会：\n\
+            目标用户：\n用户核心问题：\n内容目标：\n核心观点：\n内容切入角度：\n开场方向：\n\n当前已有支撑信息：\n- \n- \n\n\
+            仍需补充的信息：\n- \n- \n\n希望用户采取的行动：\n风险或数据缺口：\n\n【策略2】\n按相同格式输出。\n\n【策略3】\n\
+            按相同格式输出。\n\n规则：\n1. 不生成完整标题或完整文案。\n2. 不新增上一步不存在的内容机会。\n3. 不得虚构任何价格、数据、案例或产品能力。\n\
+            4. 输入中没有的信息必须放在“仍需补充的信息”，不得写成已经拥有。\n5. 不要输出任何JSON Schema、字段定义或代码。"
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              additionalProperties:
+                type: string
+              properties:
+                additionalProperties: false
+                properties:
+                  strategies:
+                    additionalProperties: false
+                    properties:
+                      description:
+                        type: string
+                      items:
+                        additionalProperties: false
+                        properties:
+                          additionalProperties:
+                            type: string
+                          properties:
+                            additionalProperties: false
+                            properties:
+                              content_angle:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              content_objective:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              core_message:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              cta:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              opening_direction:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              risk_or_gap:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              source_opportunity:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              supporting_information:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  items:
+                                    additionalProperties: false
+                                    properties:
+                                      type:
+                                        type: string
+                                    required:
+                                    - type
+                                    type: object
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                - items
+                                type: object
+                              target_user:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              user_problem:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                            required:
+                            - source_opportunity
+                            - target_user
+                            - user_problem
+                            - content_objective
+                            - core_message
+                            - content_angle
+                            - opening_direction
+                            - supporting_information
+                            - cta
+                            - risk_or_gap
+                            type: object
+                          required:
+                            items:
+                              type: string
+                            type: array
+                          type:
+                            type: string
+                        required:
+                        - type
+                        - properties
+                        - required
+                        - additionalProperties
+                        type: object
+                      maxItems:
+                        type: number
+                      type:
+                        type: string
+                    required:
+                    - type
+                    - description
+                    - maxItems
+                    - items
+                    type: object
+                required:
+                - strategies
+                type: object
+              required:
+                items:
+                  type: string
+                type: array
+              type:
+                type: string
+            required:
+            - type
+            - properties
+            - required
+            - additionalProperties
+            type: object
+        structured_output_enabled: false
+        title: LLM 3
+        type: llm
+        vision:
+          enabled: false
+      height: 116
+      id: '1787989118971'
+      position:
+        x: 696
+        y: 582.1052856445312
+      positionAbsolute:
+        x: 696
+        y: 582.1052856445312
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1788082404001'
+          - result
+        desc: 多平台方案
+        model:
+          completion_params:
+            max_tokens: 3000
+            temperature: 0.5
+            thinking: false
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: ad9a3e70-e8e6-4c14-9350-df17df73423f
+          role: system
+          text: '你是一名多平台内容增长与内容分发策略专家。
+
+
+            任务：
+
+            基于已确定的内容策略，为用户指定的平台设计差异化执行方案。
+
+
+            目标：
+
+            不是简单改写同一内容，而是根据不同平台的内容消费方式调整表达重点、结构和互动设计，同时保持原策略的用户问题、内容目标和核心观点不变。
+
+
+            规则：
+
+
+            1. 上游一致性
+
+            - 不创造新的核心选题或用户需求。
+
+            - 不改变上一步的核心用户问题、内容目标和核心观点。
+
+            - 只处理用户指定的平台。
+
+
+            2. 平台差异
+
+            不同平台必须体现执行逻辑差异，而不是只改标题或字数。
+
+
+            参考：
+
+            - 小红书：搜索价值、收藏价值、信息密度、真实体验感
+
+            - 抖音：前3秒吸引力、节奏、问题感、完播与互动
+
+            - 视频号：信任感、信息价值、逻辑清晰、口播适配
+
+
+            以上属于策略参考；若缺少真实历史数据，不得写成已验证平台规律。
+
+
+            3. 每个平台输出
+
+            - 推荐内容形式
+
+            - 核心表达重点
+
+            - 开场方向
+
+            - 内容结构
+
+            - 互动设计
+
+            - 用户行动
+
+            - 可选短示例
+
+            - 平台适配判断及原因
+
+
+            若某平台不适合当前策略，允许明确说明不建议优先投放。
+
+
+            4. 事实与数据边界
+
+            - 所有具体产品能力、案例、金额、价格、比例和市场数据，只能来自输入或已确认知识库。
+
+            - 缺失信息必须使用占位符或标记“待补充 / 待确认”，不得自行生成。
+
+            - 上游已经标记为未确认的信息，不得在本节点升级为事实。
+
+            - 不得生成确定性涨跌预测、因果结论、最低价/最高价承诺或“砍价空间”结论。
+
+
+            5. 下游修正
+
+            - 若上游策略包含未经证实的因果关系、绝对化判断或产品能力假设，应主动降级为推断或待验证信息，不得继续放大。
+
+
+            6. 节点职责
+
+            - 可以给标题方向、开场示例或 3 秒 Hook。
+
+            - 不生成超长完整成稿。
+
+            - 不重复上一步完整策略信息。
+
+
+            7. 输出长度
+
+            - 每个平台每个字段控制在 1–2 句话。
+
+            - 内容结构最多 5 步。
+
+            - 短示例最多 2 条。
+
+            - 单个策略的单平台方案控制在约 200–250 字。
+
+            - 优先保证可快速阅读和执行。'
+        - id: 686925a5-0151-4916-965d-7b36ddeb7748
+          role: user
+          text: "请根据以下内容策略，为用户指定的平台生成差异化执行方案。\n\n【内容策略】\n{{#1787989118971.text#}}\n\
+            \n【品牌与内容表达规范】\n{{#context#}}\n\n【目标平台】\n{{#1787989024872.platforms#}}\n\
+            \n【运营目标】\n{{#1787989024872.operation_goal#}}\n\n【产品信息】\n{{#1787989024872.product_info#}}\n\
+            \n要求：\n\n1. 对每一条内容策略分别生成平台执行方案。\n2. 只处理用户选择的平台。\n3. 不同平台不能只是简单改写，必须体现平台逻辑差异。\n\
+            4. 每个平台请输出：\n   - 推荐内容形式\n   - 核心表达重点\n   - 开场方向\n   - 内容结构\n   - 互动设计\n\
+            \   - 用户行动\n   - 可选的短示例\n5. 如果某个平台不适合当前内容策略，请明确说明。\n\n请以清晰、简洁、方便内容运营人员直接查看和执行的形式输出结果。\n\
+            \n按照以下结构展示：\n\n【内容策略1】\n\n### 小红书\n- 推荐内容形式：\n- 核心表达重点：\n- 开场方向：\n- 内容结构：\n\
+            - 互动设计：\n- 用户行动：\n- 短示例：\n- 平台适配判断：\n- 判断原因：\n\n### 抖音\n- 推荐内容形式：\n- 核心表达重点：\n\
+            - 前3秒切入：\n- 内容结构：\n- 互动设计：\n- 用户行动：\n- 短示例：\n- 平台适配判断：\n- 判断原因：\n\n然后继续输出下一条内容策略。\n\
+            短示例可以示范表达结构，但所有涉及具体数字的位置必须使用占位符，不允许生成示例数字。\n不要生成超长完整文案，不要添加不存在的数据或事实。"
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              additionalProperties:
+                type: string
+              properties:
+                additionalProperties: false
+                properties:
+                  platform_plans:
+                    additionalProperties: false
+                    properties:
+                      description:
+                        type: string
+                      items:
+                        additionalProperties: false
+                        properties:
+                          additionalProperties:
+                            type: string
+                          properties:
+                            additionalProperties: false
+                            properties:
+                              content_structure:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  items:
+                                    additionalProperties: false
+                                    properties:
+                                      type:
+                                        type: string
+                                    required:
+                                    - type
+                                    type: object
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                - items
+                                type: object
+                              core_focus:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              cta:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              example:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              fit_reason:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              interaction_design:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              opening_direction:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              platform:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              platform_fit:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  enum:
+                                    items:
+                                      type: string
+                                    type: array
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - enum
+                                - description
+                                type: object
+                              recommended_format:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                              source_strategy:
+                                additionalProperties: false
+                                properties:
+                                  description:
+                                    type: string
+                                  type:
+                                    type: string
+                                required:
+                                - type
+                                - description
+                                type: object
+                            required:
+                            - source_strategy
+                            - platform
+                            - recommended_format
+                            - core_focus
+                            - opening_direction
+                            - content_structure
+                            - interaction_design
+                            - cta
+                            - example
+                            - platform_fit
+                            - fit_reason
+                            type: object
+                          required:
+                            items:
+                              type: string
+                            type: array
+                          type:
+                            type: string
+                        required:
+                        - type
+                        - properties
+                        - required
+                        - additionalProperties
+                        type: object
+                      type:
+                        type: string
+                    required:
+                    - type
+                    - description
+                    - items
+                    type: object
+                required:
+                - platform_plans
+                type: object
+              required:
+                items:
+                  type: string
+                type: array
+              type:
+                type: string
+            required:
+            - type
+            - properties
+            - required
+            - additionalProperties
+            type: object
+        structured_output_enabled: false
+        title: LLM 4
+        type: llm
+        vision:
+          enabled: false
+      height: 116
+      id: '1787989121188'
+      position:
+        x: 696
+        y: 282
+      positionAbsolute:
+        x: 696
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        outputs:
+        - value_selector:
+          - '1787989121188'
+          - text
+          value_type: string
+          variable: platform_plan
+        - value_selector:
+          - '1787989081538'
+          - text
+          value_type: string
+          variable: content_opportunities
+        - value_selector:
+          - '1787989063892'
+          - structured_output
+          value_type: object
+          variable: user_insight
+        selected: false
+        title: 输出
+        type: end
+      height: 140
+      id: '1787990087116'
+      position:
+        x: 1017.6782261775243
+        y: 282
+      positionAbsolute:
+        x: 1017.6782261775243
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - HaUFU6l1IRdtHPtFvpAiQK8n/6TsjNQn5DHW4UovDeYLNRvHoQy3pPKd2/BWJU6r
+        desc: 产品事实检索
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: qwen3-rerank
+            provider: langgenius/tongyi/tongyi
+          score_threshold: null
+          top_k: 3
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1787989081538'
+        - text
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索
+        type: knowledge-retrieval
+      height: 118
+      id: '1788077153398'
+      position:
+        x: 382
+        y: 582.1052856445312
+      positionAbsolute:
+        x: 382
+        y: 582.1052856445312
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - HaUFU6l1IRdtHPtFvpAiQK8n/6TsjNQn5DHW4UovDeYLNRvHoQy3pPKd2/BWJU6r
+        desc: 品牌规范检索
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: qwen3-rerank
+            provider: langgenius/tongyi/tongyi
+          score_threshold: null
+          top_k: 4
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1787989118971'
+        - text
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 2
+        type: knowledge-retrieval
+      height: 118
+      id: '1788082404001'
+      position:
+        x: 696
+        y: 428.69888491614665
+      positionAbsolute:
+        x: 696
+        y: 428.69888491614665
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 内容表现复盘
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 26466898-343f-46bb-84ff-8a1dc5062f2d
+          role: system
+          text: "你是 AI Content Growth Copilot 的内容表现复盘模块。\n\n任务：\n基于历史内容数据和账号基线，判断上一轮表现能够为下一轮内容决策提供什么证据。\n\
+            \n规则：\n\n1. 事实边界\n- 所有事实判断只能来自历史内容数据和基线指标。\n- 明确区分：\n  - Fact：数据直接证明\n\
+            \  - Inference：基于事实的合理推断\n  - Hypothesis：需要继续测试的假设\n- 多个变量同时变化时，不得判断单一变量导致结果变化。\n\
+            \n2. 证据等级\n- Level A：多轮相似测试结果稳定，证据充分\n- Level B：已有多个正向或负向信号，但仍需验证\n- Level\
+            \ C：单条数据、少量数据或 AI 推断\n\n不得因为单条内容表现好，就宣布某种主题、形式或平台策略已经被验证。\n\n3. 业务目标\n\
+            - 内容表现必须结合原始运营目标判断。\n- 若目标是 App 拉新，应优先关注 App访问、下载、注册等业务指标，而不是只看曝光和点赞。\n\
+            \n4. 下一轮测试\n优先使用 Controlled Experiment（控制变量实验）：\n- 保留什么\n- 改变什么\n- 为什么测试\n\
+            - 重点观察什么指标\n\n5. 知识沉淀\n- 只能提出“知识沉淀建议”。\n- 不得自动将分析结论升级为长期知识库事实，最终需要人工审核。\n\
+            \n6. 输出长度\n只输出：\n- 整体表现结论\n- 关键事实\n- 重要推断\n- 证据等级\n- 下一轮测试建议\n- 知识沉淀建议\n\
+            \n避免逐条复述全部原始数据，总体控制在约 500 字以内。\n若无历史数据，明确输出“暂无可用历史内容表现数据”，不得虚构。"
+        - id: e7416924-a001-4e69-9d9e-43c6c0e9083f
+          role: user
+          text: '请复盘以下历史内容表现：
+
+
+            【历史内容数据】
+
+            {{#1787989024872.historical_content_data#}}
+
+
+            【账号基线指标】
+
+            {{#1787989024872.baseline_metrics#}}
+
+
+            请输出：
+
+
+            【整体表现结论】
+
+            当前哪些用户需求、内容角度或内容形式出现了正向/负向信号。
+
+
+            【事实观察】
+
+            只写数据直接支持的结论。
+
+
+            【可能原因】
+
+            列出合理推断，并明确这是推断而不是事实。
+
+
+            【证据等级】
+
+            分别判断重要结论属于：
+
+            Level A（A级）已验证经验
+
+            Level B（B级）弱信号
+
+            Level C（C级）待验证假设
+
+
+            【下一轮测试建议】
+
+            说明：
+
+            - 保留什么
+
+            - 改变什么
+
+            - 为什么这样测试
+
+            - 重点观察什么指标
+
+
+            【知识沉淀建议】
+
+            哪些可以继续保留为假设；
+
+            哪些可升级为弱信号；
+
+            哪些暂时不能进入已验证经验。
+
+
+            如果没有提供历史数据，请明确输出“暂无可用历史内容表现数据”，不得自行虚构。'
+        selected: false
+        title: LLM 5
+        type: llm
+        vision:
+          enabled: false
+      height: 116
+      id: '1788771473383'
+      position:
+        x: 111.93013377426655
+        y: 391.3564523550484
+      positionAbsolute:
+        x: 111.93013377426655
+        y: 391.3564523550484
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    viewport:
+      x: -81.04072426721876
+      y: 194.03223335467388
+      zoom: 0.4189425188787673
+  rag_pipeline_variables: []
