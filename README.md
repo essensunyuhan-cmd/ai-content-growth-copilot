@@ -5,7 +5,9 @@
 AI Content Growth Copilot 是一个面向内容运营 / 新媒体运营 / 小型内容团队的 **AI 内容增长决策 Workflow（工作流）**。  
 它不以“批量生成文案”为核心，而是把 **历史表现、用户反馈、产品事实、品牌规范** 串进同一条决策链路，帮助运营人员从证据出发发现内容机会、制定策略，并为下一轮增长实验提供依据。
 
-**Status:** V1.2 · Dify Workflow · RAG · Eval · Human-in-the-loop
+**Status:** V1.2 · Dify Workflow · RAG · Eval · Human-in-the-loop · Web Demo
+
+**Live Demo:** https://ai-content-growth-copilot.vercel.app/
 
 ---
 
@@ -196,8 +198,10 @@ V1.1 的核心改动：
 ├── samples/
 │   ├── sample-input.md
 │   └── sample-output-template.md
-└── assets/
-    └── workflow.png
+└── web/
+    ├── app/
+    ├── components/
+    └── lib/
 ```
 
 ---
